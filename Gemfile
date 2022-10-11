@@ -74,3 +74,5 @@ end
 gem "devise", "~> 4.8"
 
 gem "sass-rails", "~> 6.0"
+
+gem "cancancan", "~> 3.4"

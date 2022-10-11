@@ -6,4 +6,26 @@ class User < ApplicationRecord
          
   has_many :inventories, foreign_key: 'inventory_id', dependent: :destroy
   has_many :recipes, dependent: :destroy
+
+  enum role: %i[user moderator admin]
+
+  after_initialize :set_default_role, if: :new_record?
+
+  def is?(role)
+    self.role == role.to_s
+  end
+
+  def moderator?
+    is? :moderator
+  end
+
+  def admin?
+    is? :admin
+  end
+
+  private
+
+  def set_default_role
+    self.role ||= :user
+  end
 end
