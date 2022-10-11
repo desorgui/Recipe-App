@@ -1,0 +1,12 @@
+// Import variables and mixins
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// Import reset and base styles
+@import 'base/base';
+
+// Import components styles
+@import 'components/c-header';
+
+// Import pages styles
+@import 'pages/p-main-container';
