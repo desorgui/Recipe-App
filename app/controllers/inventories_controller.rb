@@ -3,11 +3,13 @@ class InventoriesController < ApplicationController
 
   # GET /inventories or /inventories.json
   def index
-    @inventories = Inventory.all
+    @inventories = Inventory.where(user_id: current_user.id)
   end
 
   # GET /inventories/1 or /inventories/1.json
   def show
+    @inventory = Inventory.where(user_id: current_user.id).find(params[:id])
+    @inventory_food = @inventory.inventory_foods.includes(:food)
   end
 
   # GET /inventories/new

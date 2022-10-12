@@ -1,11 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @inventory %>
-
-<div>
-  <h1><%=@inventory.name%></h1>
-  <%= link_to "Edit this inventory", edit_inventory_path(@inventory) %> |
-  <%= link_to "Back to inventories", inventories_path %>
-
-  <%= button_to "Destroy this inventory", @inventory, method: :delete %>
-</div>
+<section class = 'd-flex flex-column mb-2 align-items-center'>
+  <%= @inventory.name %>
+  <div class='food-btn'>
+    <%= link_to 'Add food', "/inventory_foods/#{@inventory.id}/new", method: :post, class:'add-food'%>
+  </div>
+  <hr>
+  <div class='table'>
+    <table class = 'mb-2 align-items-center' >
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+      <% @inventory_food.each do |f| %>
+      <tr>
+        <td><%= f.food.name %></td>
+        <td><%= f.quantity %> grams</td>
+        <td><%= button_to 'Delete', "/users/#{current_user.id}/inventories/#{@inventory.id}/foods/#{f.food.id}/inventory_food/#{f.id}", method: :delete, class: "btn btn-outline-danger" %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</section>

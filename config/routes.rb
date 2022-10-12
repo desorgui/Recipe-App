@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   end
   resources :foods, only: [:index, :new, :create, :destroy]
 
+  resources :inventory_food, only: [:new, :create, :destroy] do
+    post 'shopping_list/:recipe_id', to: 'shopping_lists#generate'
+  end
+  post 'inventory_foods/:id/create', to: 'inventory_foods#create'
+  get 'inventory_foods/:id/new', to: 'inventory_foods#new'
+
   get '/public_recipes', to: 'recipes#list_public'
 
   root "foods#index"
