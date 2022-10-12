@@ -1,6 +1,6 @@
 <section class="p-recipes">
-  <header class="p-recipes__header">
-    <h1 class="p-recipes__title"><%= pluralize(@recipes.length, 'Recipe') %></h1>
+  <header class="p-recipes__header c-card">
+    <h1 class="c-section-title"><%= pluralize(@recipes.length, 'Recipe') %></h1>
     <%= link_to "new recipe", new_recipe_path, class: "c-btn" %>
   </header>
 

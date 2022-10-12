@@ -5,28 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--color-white);
-    box-shadow: var(--card-shadow-1);
-    border-radius: 1.6rem;
     padding: 1.6em 3.2rem;
     margin-bottom: 3.2rem;
-  }
-
-  &__title {
-    position: relative;
-    font-size: 2.4rem;
-    font-weight: 700;
-    padding-left: 1.2rem;
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 4px;
-      background-color: var(--color-primary);
-      border-radius: 100px;
-    }
   }
 }
