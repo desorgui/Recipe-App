@@ -17,6 +17,44 @@
   }
 }
 
-.inventory {
-  display: flex;
+#inventories{
+  margin-top: 2rem;
+  .inventory {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--color-grey-light-2);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+
+    h5{
+      margin-right: 3rem;
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+    .inventory__info {
+      display: flex;
+      align-items: center;
+      .inventory__name {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: var(--color-grey-dark-1);
+      }
+    }
+    .inventory__actions {
+      display: flex;
+      align-items: center;
+      .inventory__action {
+        margin-left: 1rem;
+        color: var(--color-grey-dark-1);
+        font-size: 1.6rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        &:hover {
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
 }
+
