@@ -15,7 +15,7 @@ class InventoryFoodsController < ApplicationController
   
     # GET /inventory_foods/new
     def new
-      @inventory = Inventory.where(user_id: current_user.id).find(params[:id])
+      @inventory = Inventory.includes(:user).find(params[:id])
       @inventory_food = InventoryFood.new
       @params = params
     end
@@ -47,7 +47,7 @@ class InventoryFoodsController < ApplicationController
                                                  inventory_id: params[:id])
           new_inventory_food.save
         end
-        redirect_to '/inventories/' + params[:id].to_s
+        redirect_to inventory_path
     end
     # def create
     #   @inventory_food = Inventory_food.new(params.require(:inventory_food).permit(:name).merge(user_id: current_user.id))

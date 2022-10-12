@@ -17,7 +17,7 @@
       <tr>
         <td><%= f.food.name %></td>
         <td><%= f.quantity %> grams</td>
-        <td><%= button_to 'Delete', "/users/#{current_user.id}/inventories/#{@inventory.id}/foods/#{f.food.id}/inventory_food/#{f.id}", method: :delete, class: "btn btn-outline-danger" %></td>
+        <td><%= button_to 'Delete', "/inventories/#{@inventory.id}/foods/#{f.food.id}/inventory_food/#{f.id}", method: :delete, class: "btn btn-outline-danger" %></td>
       </tr>
       <% end %>
     </table>
