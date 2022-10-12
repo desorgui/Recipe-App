@@ -1,14 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<section class="p-recipes">
+  <header class="p-recipes__header">
+    <h1 class="p-recipes__title"><%= pluralize(@recipes.length, 'Recipe') %></h1>
+    <%= link_to "new recipe", new_recipe_path, class: "c-btn" %>
+  </header>
 
-<h1>Recipes</h1>
+  <p style="color: green"><%= notice %></p>
 
-<div id="recipes">
-  <% @recipes.each do |recipe| %>
-    <%= render recipe %>
-    <p>
-      <%= link_to "Show this recipe", recipe %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New recipe", new_recipe_path %>
+  <div class="c-recipes-grid" id="recipes">
+    <% @recipes.each do |recipe| %>
+      <%= render recipe %>
+    <% end %>
+  </div>
+</section>

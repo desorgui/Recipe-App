@@ -1,27 +1,27 @@
-<div id="<%= dom_id recipe %>">
-  <p>
-    <strong>Name:</strong>
-    <%= recipe.name %>
-  </p>
-
-  <p>
-    <strong>Preparation time:</strong>
-    <%= recipe.preparation_time %>
-  </p>
-
-  <p>
-    <strong>Cooking time:</strong>
-    <%= recipe.cooking_time %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= recipe.description %>
-  </p>
-
-  <p>
-    <strong>Public:</strong>
-    <%= recipe.public %>
-  </p>
-
-</div>
+<%= link_to recipe do %>
+  <article class="c-recipe-item" id="<%= dom_id recipe %>">
+    <img class="c-recipe-item__img" src="https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg" alt="" />
+    <div class="c-recipe-item__content">
+      <h2 class="c-recipe-item__title">
+        <%= recipe.name %> 
+      </h2>
+      <p class="c-recipe-item__description">
+        <%= recipe.description %>
+      </p>
+      <div class="c-recipe-item__info">
+        <div class="c-recipe-item__time">
+        <svg class="c-icon--sm">
+          <use xlink:href=<%= image_url("icons/sprite.svg#clock")%>></use>
+        </svg>
+        <span><%= recipe.preparation_time %> hrs</span>
+          
+        </div>
+        <%= button_to nil, class: "c-recipe-item__btn" do %>
+          <svg class="c-icon--sm">
+            <use xlink:href=<%= image_url("icons/sprite.svg#trash")%>></use>
+          </svg>
+        <% end %>
+      </div>
+    </div>
+  </article>
+<% end %>

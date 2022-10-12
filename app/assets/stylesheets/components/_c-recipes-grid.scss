@@ -1,0 +1,5 @@
+.c-recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--recipe-item-width-desktop), min-content));
+  grid-gap: 1.2rem;
+}
