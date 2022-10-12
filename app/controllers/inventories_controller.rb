@@ -1,5 +1,5 @@
 class InventoriesController < ApplicationController
-  before_action :set_inventory, only: %i[ show edit update destroy ]
+  before_action :set_inventory, only: %i[show edit update destroy]
 
   # GET /inventories or /inventories.json
   def index
@@ -18,8 +18,7 @@ class InventoriesController < ApplicationController
   end
 
   # GET /inventories/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /inventories or /inventories.json
   def create
@@ -52,19 +51,20 @@ class InventoriesController < ApplicationController
     @inventory.destroy
 
     respond_to do |format|
-      format.html { redirect_to inventories_url, notice: "Inventory was successfully destroyed." }
+      format.html { redirect_to inventories_url, notice: 'Inventory was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_inventory
-      @inventory = Inventory.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def inventory_params
-      params.fetch(:inventory, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_inventory
+    @inventory = Inventory.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def inventory_params
+    params.fetch(:inventory, {})
+  end
 end
