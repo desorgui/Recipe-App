@@ -23,7 +23,7 @@ class InventoriesController < ApplicationController
 
   # POST /inventories or /inventories.json
   def create
-    @inventory = Inventory.new(params.require(:inventory).permit(:name))
+    @inventory = Inventory.new(params.require(:inventory).permit(:name, :description))
     @inventory.user = current_user
     if @inventory.save
       # format.html { redirect_to inventory_url(@inventory), notice: "Inventory was successfully created." }

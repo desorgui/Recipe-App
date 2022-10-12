@@ -1,14 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
+<div>
+<div class="section-title">
 <h1>Inventories</h1>
 
+<%= link_to "Add new", new_inventory_path, class: "btn btn-add" %>
+</div>
 <div id="inventories">
   <% @inventories.each do |inventory| %>
+  <div class="inventory">
     <%= render inventory %>
-    <p>
+    <h5>
       <%= link_to "#{inventory.name}", inventory %>
-    </p>
+    </h5>
+    <p> <%= "#{inventory.description}" %></p>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New inventory", new_inventory_path %>
+</div>

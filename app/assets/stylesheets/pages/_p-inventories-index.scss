@@ -1,0 +1,22 @@
+.section-title {
+  display: flex;
+  justify-content: space-between;
+
+  .btn-add {
+    color: var(--color-white);
+    font-size: 1.4rem;
+    list-style: 1;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: var(--color-primary);
+  }
+}
+
+.inventory {
+  display: flex;
+}
