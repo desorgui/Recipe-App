@@ -1,0 +1,11 @@
+<%= form_with model: Inventory, url: inventories_url(@inventory), method: :post do |f| %>
+  <% if @inventory.errors.any? %>
+     <ul class = "errors-decr">
+        <% @inventory.errors.full_messages.each do |errors| %>
+          <li><%= errors %></li>
+        <% end %>
+     </ul>
+  <% end %>
+  <%= f.text_field :name, placeholder:"Inventory name", class:"form-control p-2 mt-2"  %>
+  <%= f.submit "Create Inventory", class: "btn btn-success btn-md p-2 mt-2" %>
+<% end %> 

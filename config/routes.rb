@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  resources :inventories
   devise_for :users
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+  end
   resources :recipes, only: [:index, :new, :create, :show, :destroy] do
     resources :recipe_foods, only: [:create, :destroy]
   end
