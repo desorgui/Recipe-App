@@ -8,13 +8,20 @@
 </div>
 <div id="inventories">
   <% @inventories.each do |inventory| %>
+  <%= link_to inventory, :action => 'go' do %>
   <div class="inventory">
     <%= render inventory %>
+    <div class="left-side">
     <h5>
-      <%= link_to "#{inventory.name}", inventory %>
+      <%= "#{inventory.name}" %>
     </h5>
-    <p> <%= "#{inventory.description}" %></p>
+     <%= button_to 'REMOVE', '/inventories/', method: :delete, class:'link'%>
     </div>
+    <div class="right-side">
+      <p> <%= "#{inventory.description}" %></p>
+    </div>
+    </div>
+    <% end %>
   <% end %>
 </div>
 </div>
