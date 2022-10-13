@@ -19,7 +19,7 @@
       <% @inventory_food.each do |f| %>
       <tr>
         <td><%= f.food.name %></td>
-        <td><%= f.quantity %> grams</td>
+        <td><%= f.quantity %> <%= f.food.measurement_unit %></td>
         <td><%= link_to icon('fa-solid', 'trash-can'), inventory_inventory_food_path(@inventory.id,f.id), data: { "turbo-method": :delete }, class: "btn btn-outline-danger" %></td>
       </tr>
       <% end %>

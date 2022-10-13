@@ -1,11 +1,13 @@
-<div class="container w-full p-4 b-2">
+<div class="container add-inventory-food w-full p-4 b-2">
     <h2 class="text mb-4">Add an inventory food</h2>
     <%= form_with model: @inventory_food, url: "/inventory_foods/#{@inventory.id}/create",  local: true, data: {turbo:false} do |m| %>
-        <div class="mb-3">
+        <div class="add-food-form">
           <%= m.select :food_list, Food.order(:name).pluck(:name, :id), {}, {:multiple => true, required:true, class: "form-select mb-3"} %>
-          <%= m.label :quantity, class: "form-label" %>
-          <%= m.number_field :quantity %>
+          <div class="input-group">
+          <%= m.label :quantity, class: "form-label input-label" %>
+          <%= m.number_field :quantity, class: "input" %>
+          </div>
         </div>
-        <%= m.submit class: "btn btn-primary" %>
+        <%= m.submit 'Add food', class: "btn btn-add_inventory_food" %>
     <% end %>
 </div>

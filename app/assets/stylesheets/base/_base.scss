@@ -49,3 +49,11 @@ svg {
 textarea {
   resize: none;
 }
+
+::selection {
+  background: transparent;
+}
+
+::-moz-selection {
+  background: transparent;
+}

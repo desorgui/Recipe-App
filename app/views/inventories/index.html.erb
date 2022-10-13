@@ -14,7 +14,7 @@
     <h5>
       <%= link_to "#{inventory.name}", inventory %>
     </h5>
-     <%= button_to 'REMOVE', '/inventories/', method: :delete, class:'link'%>
+     <%= link_to 'REMOVE', inventory_path(inventory.id), data: { "turbo-method": :delete }, class:'link'%>
     </div>
     <div class="right-side">
       <p> <%= "#{inventory.description}" %></p>
