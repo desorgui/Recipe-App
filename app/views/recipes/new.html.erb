@@ -1,9 +1,11 @@
-<h1>New recipe</h1>
+<section class="p-new-recipes">
+  <header class="p-new-recipes__header c-card">
+    <h1 class="c-section-title">New recipe</h1>
+    <%= link_to "Back to recipes", recipes_path %>
+  </header>
+ 
+  <div class="p-new-recipes__content">
+    <%= render "form", recipe: @recipe %>
+  </div>
+</section>
 
-<%= render "form", recipe: @recipe %>
-
-<br>
-
-<div>
-  <%= link_to "Back to recipes", recipes_path %>
-</div>
