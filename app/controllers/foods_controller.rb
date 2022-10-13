@@ -18,12 +18,16 @@ class FoodsController < ApplicationController
   def edit; end
 
   def create
-    @food = Food.new(params.require(:food).permit(:name, :measurement_unit, :price))
-    if @food.save
-      flash[:success] = 'New Food has been created !!'
-      redirect_to foods_path
-    else
-      format.html { render :new, status: :unprocessable_entity }
+    @food = Food.new(food_params)
+
+    respond_to do |format|
+      if @food.save
+        format.html { redirect_to food_url(@food), notice: 'Food was successfully created.' }
+        format.json { render :show, status: :created, location: @food }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @food.errors, status: :unprocessable_entity }
+      end
     end
   end
   # POST /foods or /foods.json
