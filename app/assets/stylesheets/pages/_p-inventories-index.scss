@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
 
-  a {
+  .btn-add {
     color: var(--color-white);
     font-size: 1.4rem;
     list-style: 1;
@@ -11,8 +11,10 @@
     letter-spacing: 0.1rem;
     text-decoration: none;
     transition: all 0.2s;
-    padding: 4px 8px;
+    padding: 7px 12px;
     border-radius: 4px;
+    border:none;
+    outline: none;
     background-color: var(--color-primary);
   }
 }
@@ -35,8 +37,9 @@
       min-width: 12rem;
     }
     h5{
-      font-size: 1.6rem;
-      font-weight: 500;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
     }
     .inventory__info {
       display: flex;

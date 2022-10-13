@@ -40,8 +40,7 @@ class InventoryFoodsController < ApplicationController
     @inventory_food.destroy
 
     respond_to do |format|
-      format.html { redirect_to inventory_foods_url, notice: 'Inventory_food was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to inventory_path(params[:inventory_id]), notice: 'The Food was successfully deleted.' }
     end
   end
 

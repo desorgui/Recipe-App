@@ -1,3 +1,6 @@
+// Import libraries
+@import 'font-awesome';
+
 // Import variables and mixins
 @import 'abstracts/variables';
 @import 'abstracts/mixins';
@@ -7,6 +10,8 @@
 
 // Import components styles
 @import 'components/c-header';
+@import 'components/c-table';
+@import 'components/c-add-form';
 
 // Import pages styles
 @import 'pages/p-main-container';

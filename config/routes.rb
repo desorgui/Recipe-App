@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :inventories
   devise_for :users
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
@@ -8,15 +7,13 @@ Rails.application.routes.draw do
     resources :recipe_foods, only: [:create, :destroy]
   end
   resources :inventories, only: [:index, :new, :create, :show, :destroy] do
-    resources :inventory_foods, only: [:create, :destroy] do      
-      resources :foods, only: [:destroy]
-    end
+    resources :inventory_foods, only: [:create, :destroy]
   end
   resources :foods, only: [:index, :new, :create, :destroy]
 
-  resources :inventory_food, only: [:new, :create, :destroy] do
+  resources :inventory_foods, only: [:new, :show, :create, :destroy]
     # post 'shopping_list/:recipe_id', to: 'shopping_lists#generate'
-  end
+  # end
   post 'inventory_foods/:id/create', to: 'inventory_foods#create'
   get 'inventory_foods/:id/new', to: 'inventory_foods#new'
 

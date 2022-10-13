@@ -1,13 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
 <section class = 'd-flex flex-column mb-2 align-items-center'>
-  <%= @inventory.name %>
-  <div class='food-btn'>
-    <%= link_to 'Add food', "/inventory_foods/#{@inventory.id}/new", method: :post, class:'add-food'%>
+<div class="section-title">
+  <h1>
+    <%= @inventory.name %>
+  </h1>
+    <%= link_to icon('fa-solid', 'plus'), "/inventory_foods/#{@inventory.id}/new", method: :post, class:'btn btn-add'%>
   </div>
-  <hr>
-  <div class='table'>
-    <table class = 'mb-2 align-items-center' >
+
+  <div class='table'id="table-container">
+    <table class = 'mb-2 align-items-center'>
+    <tbody>
       <tr>
         <th>Food</th>
         <th>Quantity</th>
@@ -17,9 +20,10 @@
       <tr>
         <td><%= f.food.name %></td>
         <td><%= f.quantity %> grams</td>
-        <td><%= button_to 'Delete', "/inventories/#{@inventory.id}/foods/#{f.food.id}/inventory_food/#{f.id}", method: :delete, class: "btn btn-outline-danger" %></td>
+        <td><%= link_to icon('fa-solid', 'trash-can'), inventory_inventory_food_path(@inventory.id,f.id), data: { "turbo-method": :delete }, class: "btn btn-outline-danger" %></td>
       </tr>
       <% end %>
+      </tbody>
     </table>
   </div>
 </section>
