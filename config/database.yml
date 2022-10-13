@@ -1,4 +1,3 @@
-
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -7,16 +6,16 @@ default: &default
 development:
   <<: *default
   database: recipe_app_db_dev
-  username: docker
-  password: docker
+  username: postgres
+  password: 12345
   host: localhost
   port: 5432
 
 test:
   <<: *default
   database: recipe_app_db_test
-  username: docker
-  password: docker
+  username: postgres
+  password: 12345
   host: localhost
   port: 5432
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'application_system_test_case'
 
 class FoodsTest < ApplicationSystemTestCase
@@ -14,9 +16,11 @@ class FoodsTest < ApplicationSystemTestCase
     visit foods_url
     click_on 'New food'
 
-    fill_in 'Measurement unit', with: @food.measurement_unit
+    fill_in 'Measure unit', with: @food.measure_unit
     fill_in 'Name', with: @food.name
     fill_in 'Price', with: @food.price
+    fill_in 'Quantity', with: @food.quantity
+    fill_in 'User', with: @food.user_id
     click_on 'Create Food'
 
     assert_text 'Food was successfully created'
@@ -27,9 +31,11 @@ class FoodsTest < ApplicationSystemTestCase
     visit food_url(@food)
     click_on 'Edit this food', match: :first
 
-    fill_in 'Measurement unit', with: @food.measurement_unit
+    fill_in 'Measure unit', with: @food.measure_unit
     fill_in 'Name', with: @food.name
     fill_in 'Price', with: @food.price
+    fill_in 'Quantity', with: @food.quantity
+    fill_in 'User', with: @food.user_id
     click_on 'Update Food'
 
     assert_text 'Food was successfully updated'

@@ -3,9 +3,14 @@ AllCops:
   Exclude:
     - "db/**/*"
     - "bin/*" 
+    - "app/helpers/*"
+    - "app/channels/**/*"
     - "config/**/*"
+    - "test/**/*"
     - "Guardfile"
     - "Rakefile"
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
     - "node_modules/**/*"
 
   DisplayCopNames: true
@@ -40,6 +45,8 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+Style/EndOfLine:
+  Enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
@@ -48,9 +55,9 @@ Layout/ExtraSpacing:
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
-Lint/RaiseException:
+Layout/EndOfLine:
   Enabled: false
-Lint/OrAssignmentToConstant:
+Lint/RaiseException:
   Enabled: false
 Lint/StructNewOverride:
   Enabled: false
