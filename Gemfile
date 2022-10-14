@@ -80,4 +80,4 @@ gem 'sass-rails', '~> 6.0'
 
 gem 'cancancan', '~> 3.4'
 
-gem "font-awesome-sass", "~> 6.2.0"
+gem 'font-awesome-sass', '~> 6.2.0'
