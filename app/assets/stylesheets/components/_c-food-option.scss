@@ -1,4 +1,4 @@
-.c-ingredient-item {
+.c-food-option {
   display: flex;
   align-items: center;
   background-color: #fafafa;
@@ -38,25 +38,27 @@
     color: #65676b;
   }
 
-  &__quantity {
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-transform: lowercase;
-    color: #65676b;
+  &__checkbox {
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-right: 1.2rem;
   }
 
-  &__action {
+  &__label {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-right: 0.8rem;
+  }
+
+  &__form-group {
+    display: flex;
+    align-items: center;
     border-left: 1px solid #ced0d4;
     padding-left: 1.2rem;
     margin-left: 1.2rem;
-    padding-right: 0.4rem;
   }
 
-  &__btn {
-    @include centerWithFlex;
-    border: none;
-    background-color: transparent;
-    color: #ccc;
-    color: #ced0d4;
+  &__input {
+    font-size: 1.5rem;
   }
 }

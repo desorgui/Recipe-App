@@ -21,9 +21,16 @@
 @import 'components/c-simple-list';
 @import 'components/c-display-info';
 @import 'components/c-icon-btn';
+@import 'components/c-popup';
+@import 'components/c-food-option';
+@import 'components/c-food-options-form';
 
 // Import pages styles
 @import 'pages/p-main-container';
 @import 'pages/p-recipes';
 @import 'pages/p-new-recipes';
 @import 'pages/p-recipe-details';
+
+// Import utility classes
+
+@import 'base/utilities';

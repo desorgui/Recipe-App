@@ -1,6 +1,11 @@
 <%= link_to recipe do %>
   <article class="c-recipe-item c-card" id="<%= dom_id recipe %>">
-    <%= render "components/recipe_img", image: recipe.image, image_class: "c-recipe-item__img" %>
+    <%= render "components/attached_img", 
+      image: recipe.image, 
+      image_class: "c-recipe-item__img", 
+      image_alt: "recipe photo",
+      placeholder: "recipe_placeholder.jpg"
+    %>
     <div class="c-recipe-item__content">
       <h2 class="c-recipe-item__title">
         <%= recipe.name %> 

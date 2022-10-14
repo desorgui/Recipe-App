@@ -1,3 +1,8 @@
+<% infos = [
+    { title: "preparation time (hrs)", value: @recipe.preparation_time },
+    { title: "cooking time (hrs)", value: @recipe.cooking_time }
+  ] %>
+
 <section class="p-recipe-details">
 
   <article class="c-recipe-view c-card">
@@ -28,7 +33,12 @@
       </div>
     </header>
 
-    <%= render "components/recipe_img", image: @recipe.image, image_class: "c-recipe-view__img" %>
+    <%= render "components/attached_img", 
+      image: @recipe.image, 
+      image_class: "c-recipe-view__img",
+      image_alt: "recipe photo",
+      placeholder: "recipe_placeholder.jpg" 
+    %>
 
     <h1 class="c-recipe-view__title c-section-title">
       <%= @recipe.name %>
@@ -38,25 +48,7 @@
       <%= @recipe.description %>
     </p>
 
-    <div class="c-display-info">
-      <div class="c-display-info__box">
-        <span class="c-display-info__value">
-          <%= @recipe.preparation_time %>
-        </span>
-        <h3 class="c-display-info__title">
-          preparation time (hrs)
-        </h3>
-      </div>
-
-      <div class="c-display-info__box">
-        <span class="c-display-info__value">
-          <%= @recipe.cooking_time %>
-        </span>
-        <h3 class="c-display-info__title">
-          cooking time (hrs)
-        </h3>
-      </div>
-    </div>
+    <%= render "components/display_info", infos: %>
 
     <div class="c-recipe-view__btn-group">
       <%= button_to "generate shopping list", nil, class: "c-btn" %>
@@ -66,74 +58,39 @@
     <div class="c-ingredients c-recipe-view__ingredients">
       <header class="c-ingredients__header">
         <h2 class="c-ingredients__title">
-          Ingredients
+          <%= pluralize(@ingredients.length, 'Ingredient') %>
         </h2>
-        <%= button_to nil, class: "c-icon-btn" do %>
+        <%= button_to nil,
+          class: "c-icon-btn",
+          remote: true,
+          data: {
+            controller: "popup",
+            action: "popup#openPopup",
+            popup_id_param: "select-food-popup"
+          } do %>
           <svg class="c-icon--sm">
             <use xlink:href=<%= image_url("icons/sprite.svg#plus")%>></use>
           </svg>
         <% end %>
       </header>
 
-      <ul class="c-simple-list">
-        <li>
-          <div class="c-ingredient-item">
-            <img 
-              src=<%= image_url('food_placeholder.png') %>
-              class="c-ingredient-item__img" 
-              alt="ingredient photo" 
-            />
-            <div class="c-ingredient-item__info">
-              <h3 class="c-ingredient-item__title">
-                Eggs
-              </h3>
-              <p class="c-ingredient-item__price">
-                Price: $2
-              </p>
-            </div>
-            <span class="c-ingredient-item__quantity">
-              3 pc
-            </span>
-
-            <div class="c-ingredient-item__action">
-              <%= button_to nil, class: "c-ingredient-item__btn" do %>
-                <svg class="c-icon--md">
-                  <use xlink:href=<%= image_url("icons/sprite.svg#x")%>></use>
-                </svg>
-              <% end %>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="c-ingredient-item">
-            <img 
-              src=<%= image_url('food_placeholder2.jpg') %>
-              class="c-ingredient-item__img" 
-              alt="ingredient photo" 
-            />
-            <div class="c-ingredient-item__info">
-              <h3 class="c-ingredient-item__title">
-                Eggs
-              </h3>
-              <p class="c-ingredient-item__price">
-                Price: $2
-              </p>
-            </div>
-            <span class="c-ingredient-item__quantity">
-              3 pc
-            </span>
-
-            <div class="c-ingredient-item__action">
-              <%= button_to nil, class: "c-ingredient-item__btn" do %>
-                <svg class="c-icon--md">
-                  <use xlink:href=<%= image_url("icons/sprite.svg#x")%>></use>
-                </svg>
-              <% end %>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <% if @ingredients.empty? %>
+        <p>No ingredients added.</p>
+      <% else %>
+        <ul class="c-simple-list">
+          <% @ingredients.each do |ingredient| %>
+            <li>
+              <%= render "components/ingredient_item", ingredient: %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </article>
 
+  <%= render "components/ingredients_popup",
+    popup_id: "select-food-popup",
+    form_route: recipe_recipe_foods_path(@recipe),
+    foods: @foods
+  %>
 </section>
