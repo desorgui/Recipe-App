@@ -1,10 +1,6 @@
 <%= link_to recipe do %>
   <article class="c-recipe-item c-card" id="<%= dom_id recipe %>">
-    <% if recipe.image.attached? %>
-      <%= image_tag(recipe.image, class: "c-recipe-item__img") %>
-    <% else %>
-      <img class="c-recipe-item__img" src=<%= image_url("recipe_placeholder.jpg") %> alt="" />
-    <% end %>
+    <%= render "components/recipe_img", image: recipe.image, image_class: "c-recipe-item__img" %>
     <div class="c-recipe-item__content">
       <h2 class="c-recipe-item__title">
         <%= recipe.name %> 
@@ -20,11 +16,7 @@
         <span><%= recipe.preparation_time %> hrs</span>
           
         </div>
-        <%= button_to recipe_path(recipe), method: :delete, class: "c-recipe-item__btn" do %>
-          <svg class="c-icon--sm">
-            <use xlink:href=<%= image_url("icons/sprite.svg#trash")%>></use>
-          </svg>
-        <% end %>
+        <%= render "components/delete_recipe_btn", recipe: %>
       </div>
     </div>
   </article>

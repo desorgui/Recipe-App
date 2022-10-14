@@ -1,0 +1,7 @@
+<% image_alt = "recipe photo" %>
+
+<% if image.attached? %>
+  <%= image_tag(image, class: image_class, alt: image_alt) %>
+<% else %>
+  <img class=<%= image_class %> src=<%= image_url("recipe_placeholder.jpg") %> alt=<%= image_alt %> />
+<% end %>

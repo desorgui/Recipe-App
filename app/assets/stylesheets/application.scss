@@ -15,8 +15,15 @@
 @import 'components/c-section-title';
 @import 'components/c-input';
 @import 'components/c-new-recipe-form';
+@import 'components/c-recipe-view';
+@import 'components/c-ingredient-item';
+@import 'components/c-ingredients';
+@import 'components/c-simple-list';
+@import 'components/c-display-info';
+@import 'components/c-icon-btn';
 
 // Import pages styles
 @import 'pages/p-main-container';
 @import 'pages/p-recipes';
 @import 'pages/p-new-recipes';
+@import 'pages/p-recipe-details';

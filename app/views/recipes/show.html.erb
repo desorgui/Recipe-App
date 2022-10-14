@@ -1,10 +1,139 @@
-<p style="color: green"><%= notice %></p>
+<section class="p-recipe-details">
 
-<%= render @recipe %>
+  <article class="c-recipe-view c-card">
+    <header class="c-recipe-view__header">
+      <div class="c-recipe-view__author-box">
+        <img 
+          src=<%= image_url('blank_avatar.jpg') %>
+          class="c-recipe-view__author-img" 
+          alt="recipe author photo" 
+        />
+        <div class="c-recipe-view__author-info">
+          <span class="c-recipe-view__author-name">
+            <%= @recipe.user.name %>
+          </span>
+          <span class="c-recipe-view__date">
+            created <%= time_ago_in_words(@recipe.created_at) %> ago
+          </span>
+        </div>
+      </div>
 
-<div>
-  
-  <%= link_to "Back to recipes", recipes_path %>
+      <div class="c-recipe-view__action">
+        <%= link_to recipes_path, class: "c-icon-btn" do %>
+          <svg class="c-icon--sm">
+            <use xlink:href=<%= image_url("icons/sprite.svg#chevron-left")%>></use>
+          </svg>
+        <% end %>
+        <%= render "components/delete_recipe_btn", recipe: @recipe %>
+      </div>
+    </header>
 
-  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
-</div>
+    <%= render "components/recipe_img", image: @recipe.image, image_class: "c-recipe-view__img" %>
+
+    <h1 class="c-recipe-view__title c-section-title">
+      <%= @recipe.name %>
+    </h1>
+
+    <p class="c-recipe-view__description">
+      <%= @recipe.description %>
+    </p>
+
+    <div class="c-display-info">
+      <div class="c-display-info__box">
+        <span class="c-display-info__value">
+          <%= @recipe.preparation_time %>
+        </span>
+        <h3 class="c-display-info__title">
+          preparation time (hrs)
+        </h3>
+      </div>
+
+      <div class="c-display-info__box">
+        <span class="c-display-info__value">
+          <%= @recipe.cooking_time %>
+        </span>
+        <h3 class="c-display-info__title">
+          cooking time (hrs)
+        </h3>
+      </div>
+    </div>
+
+    <div class="c-recipe-view__btn-group">
+      <%= button_to "generate shopping list", nil, class: "c-btn" %>
+      <%= button_to "publish this recipe", nil, class: "c-btn" %>
+    </div>
+
+    <div class="c-ingredients c-recipe-view__ingredients">
+      <header class="c-ingredients__header">
+        <h2 class="c-ingredients__title">
+          Ingredients
+        </h2>
+        <%= button_to nil, class: "c-icon-btn" do %>
+          <svg class="c-icon--sm">
+            <use xlink:href=<%= image_url("icons/sprite.svg#plus")%>></use>
+          </svg>
+        <% end %>
+      </header>
+
+      <ul class="c-simple-list">
+        <li>
+          <div class="c-ingredient-item">
+            <img 
+              src=<%= image_url('food_placeholder.png') %>
+              class="c-ingredient-item__img" 
+              alt="ingredient photo" 
+            />
+            <div class="c-ingredient-item__info">
+              <h3 class="c-ingredient-item__title">
+                Eggs
+              </h3>
+              <p class="c-ingredient-item__price">
+                Price: $2
+              </p>
+            </div>
+            <span class="c-ingredient-item__quantity">
+              3 pc
+            </span>
+
+            <div class="c-ingredient-item__action">
+              <%= button_to nil, class: "c-ingredient-item__btn" do %>
+                <svg class="c-icon--md">
+                  <use xlink:href=<%= image_url("icons/sprite.svg#x")%>></use>
+                </svg>
+              <% end %>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="c-ingredient-item">
+            <img 
+              src=<%= image_url('food_placeholder2.jpg') %>
+              class="c-ingredient-item__img" 
+              alt="ingredient photo" 
+            />
+            <div class="c-ingredient-item__info">
+              <h3 class="c-ingredient-item__title">
+                Eggs
+              </h3>
+              <p class="c-ingredient-item__price">
+                Price: $2
+              </p>
+            </div>
+            <span class="c-ingredient-item__quantity">
+              3 pc
+            </span>
+
+            <div class="c-ingredient-item__action">
+              <%= button_to nil, class: "c-ingredient-item__btn" do %>
+                <svg class="c-icon--md">
+                  <use xlink:href=<%= image_url("icons/sprite.svg#x")%>></use>
+                </svg>
+              <% end %>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </article>
+
+</section>
