@@ -13,7 +13,7 @@ class ShoppingListController < ApplicationController
   # method to create shopping list
 
   def show
-    @recipe_foods = RecipeFood.where(food_id: params[:food_id])
+    @recipe_foods = RecipeFood.where(id: params[:recipe_id])
     @recipe_foods.each do |recipe_food|
       # if food is not in inventory_food table, add it to shopping list
       if InventoryFood.where(food_id: recipe_food.food_id, inventory_id: params[:id]).blank?
