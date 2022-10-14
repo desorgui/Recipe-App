@@ -51,7 +51,15 @@
     <%= render "components/display_info", infos: %>
 
     <div class="c-recipe-view__btn-group">
-      <%= button_to "generate shopping list", nil, class: "c-btn" %>
+      <%= button_to "generate shopping list", nil,
+        class: "c-btn",
+        remote: true,
+        data: {
+          controller: "popup",
+          action: "popup#openPopup",
+          popup_id_param: "select-inventories-popup"
+        }
+      %>
       <%= button_to "publish this recipe", nil, class: "c-btn" %>
     </div>
 
@@ -92,5 +100,12 @@
     popup_id: "select-food-popup",
     form_route: recipe_recipe_foods_path(@recipe),
     foods: @foods
+  %>
+
+  <%= render "components/shopping_list_popup",
+    popup_id: "select-inventories-popup",
+    form_route: shopping_list_path(),
+    inventories: @inventories,
+    recipe_id: @recipe.id
   %>
 </section>

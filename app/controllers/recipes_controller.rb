@@ -1,6 +1,11 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
 
+  def shopping_list 
+    p params[:inventory_id]
+    p params[:recipe_id]
+  end
+
   # GET /recipes or /recipes.json
   def index
     @recipes = Recipe.by_user(current_user)
@@ -10,6 +15,7 @@ class RecipesController < ApplicationController
   def show
     @foods = Food.all
     @ingredients = @recipe.recipe_foods.includes(:food)
+    @inventories = Inventory.where(user: current_user)
   end
 
   # GET /recipes/new
