@@ -37,11 +37,7 @@ gem 'jbuilder'
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-<<<<<<< HEAD
 gem 'tzinfo-data'
-=======
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
->>>>>>> 9f6301c063f25e632ff98cc163acfa5811a02e63
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
@@ -54,14 +50,10 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-<<<<<<< HEAD
-  gem 'debug', platforms: %i[mri mingw x64_mingw]
-=======
   gem 'database_cleaner'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-controller-testing'
   gem 'rspec-rails', '>= 3.9.0'
->>>>>>> 9f6301c063f25e632ff98cc163acfa5811a02e63
 end
 
 group :development do
@@ -87,8 +79,5 @@ gem 'devise', '~> 4.8'
 gem 'sass-rails', '~> 6.0'
 
 gem 'cancancan', '~> 3.4'
-<<<<<<< HEAD
 
 gem "font-awesome-sass", "~> 6.2.0"
-=======
->>>>>>> 9f6301c063f25e632ff98cc163acfa5811a02e63

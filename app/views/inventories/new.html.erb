@@ -9,8 +9,8 @@
         <% end %>
      </ul>
   <% end %>
-  <%= f.text_field :name, placeholder:"Inventory name", class:"form-control p-2 mt-2 form__field"  %>
-  <%= f.text_area :description, size: '50x10', class:"form-control p-2 mt-2" %>
+  <%= f.text_field :name, placeholder:"Inventory name", required: true, class:"form-control p-2 mt-2 form__field"  %>
+  <%= f.text_area :description, placeholder:"Inventory description", required: true, size: '50x10', class:"form-control p-2 mt-2" %>
   <%= f.submit "Create Inventory", class: "btn btn--primary btn--inside uppercase" %>
 <% end %>
 </div>

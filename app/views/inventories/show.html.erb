@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <section class = 'd-flex flex-column mb-2 align-items-center'>
-<div class="section-title">
+<div class="section-title inventory_foods">
   <h1>
     <%= @inventory.name %>
   </h1>
@@ -16,13 +16,21 @@
         <th>Quantity</th>
         <th>Actions</th>
       </tr>
-      <% @inventory_food.each do |f| %>
-      <tr>
-        <td><%= f.food.name %></td>
-        <td><%= f.quantity %> <%= f.food.measurement_unit %></td>
-        <td><%= link_to icon('fa-solid', 'trash-can'), inventory_inventory_food_path(@inventory.id,f.id), data: { "turbo-method": :delete }, class: "btn btn-outline-danger" %></td>
-      </tr>
-      <% end %>
+        <% if @inventory_food.length > 0 %>
+          <% @inventory_food.each do |f| %>
+            <tr>
+              <td><%= f.food.name %></td>
+              <td><%= f.quantity %> <%= f.food.measurement_unit %></td>
+              <td><%= link_to icon('fa-solid', 'trash-can'), inventory_inventory_food_path(@inventory.id,f.id), data: { "turbo-method": :delete }, class: "btn btn-outline-danger" %></td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td></td>
+            <td>No food for this inventory</td>
+            <td></td>
+          </tr>          
+        <% end %>
       </tbody>
     </table>
   </div>
