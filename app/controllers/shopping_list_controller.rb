@@ -1,6 +1,6 @@
 class ShoppingListController < ApplicationController
   def inventory_food_quantity(food_id)    
-    inventory_id = 15
+    inventory_id = params[:inventory_id]
     @inventory_food = InventoryFood.where(food_id:food_id, inventory_id:inventory_id)
     @inventory_food[0].quantity
   end
@@ -8,7 +8,10 @@ class ShoppingListController < ApplicationController
   def index
     recipe_id = params[:recipe_id]
     inventory_id = params[:inventory_id]
-    
+
+    p recipe_id
+    p inventory_id
+
     @recipe_foods = RecipeFood.where(recipe_id:recipe_id)
     @recipe_foods.each do |recipe_food|
       @shopping_list ||= []       
@@ -23,5 +26,7 @@ class ShoppingListController < ApplicationController
         end
       end
     end
+
+    render 'shopping_list/index'
   end
 end

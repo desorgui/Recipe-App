@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-import { get } from "@rails/request.js"
 
 export default class extends Controller {
   generate(event) {
@@ -10,6 +9,6 @@ export default class extends Controller {
     const selectElem = document.getElementById(event.params["select"]);
     const inventoryId = selectElem.value;
 
-    get(`/shopping_list?recipe_id=${recipeId}&inventory_id=${inventoryId}`);
+    location.replace(`/shopping_list?recipe_id=${recipeId}&inventory_id=${inventoryId}`);
   }
 }

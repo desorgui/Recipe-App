@@ -3,7 +3,7 @@
 <section class = 'd-flex flex-column mb-2 align-items-center'>
 <div class="section-title inventory_foods">
   <h1>
-    shopping_list
+    Shopping List
   </h1>
   </div>
 
@@ -13,13 +13,15 @@
       <tr>
         <th>Food</th>
         <th>Quantity</th>
+        <th>Price</th>
         <th>Actions</th>
       </tr>
         <% if @shopping_list.length > 0 %>
           <% @shopping_list.each_with_index  do |f, index| %>
             <tr>
               <td><%= f[:food].name %></td>
-              <td><%= f[:quantity] %></td>
+              <td><%= "#{f[:quantity]} #{f[:food].measurement_unit}" %></td>
+              <td>$ <%= f[:food].price * f[:quantity] %></td>
               <td><%= link_to icon('fa-solid', 'trash-can'), '/Food', data: { "turbo-method": :delete }, class: "btn btn-outline-danger" %></td>
             </tr>
           <% end %>
