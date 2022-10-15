@@ -24,7 +24,7 @@
     <% if inventories.empty? %>
       <p>No inventories created. Please, create an inventory first!</p>
     <% else %>
-      <%= form_with url: form_route, class: "c-inventory-options-form" do |form| %>
+      <div class="c-inventory-options-form">
         <div class="c-inventory-options-form__sgroup">
           <label 
             for="inventory_select"
@@ -44,16 +44,17 @@
               </option>
             <% end %>
           </select>
-          <input 
-            name="recipe_id" 
-            type="hidden"
-            value=<%= recipe_id %>
-            autocomplete="off"
-          >
         </div>
 
-        <%= form.submit "generate", class: "c-btn" %>
-      <% end %>
+        <%= link_to "generate", nil, 
+          class: "c-btn",
+          data: {
+          controller: "shoplist",
+          action: "shoplist#generate",
+          shoplist_recipeid_param: recipe_id,
+          shoplist_select_param: "inventory_select"  
+        } %>
+      </div>
     <% end %>
   </div> 
 </div>

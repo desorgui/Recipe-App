@@ -1,0 +1,50 @@
+<p style="color: green"><%= notice %></p>
+
+<section class = 'd-flex flex-column mb-2 align-items-center'>
+<div class="section-title inventory_foods">
+  <h1>
+    Shopping List
+  </h1>
+  <div class="shopping_details">
+    <div>
+    <p>Amount of food to buy: <span><%= @shopping_list.length %></span> </p>
+    <p>Total value of food needed: <span>$ <%= @total_price %></span> </p>
+    </div>
+
+    <div>
+      <p>Recipe: <%= link_to "Recipe #{@recipe_to_find}", "/recipes/#{@recipe_to_find}", method: :get, class:''%></p>
+      <p>Recipe: <%= link_to "Inventory  #{@inventory_to_find}", "/inventories/#{@inventory_to_find}", method: :get, class:''%></p>    
+    </div>
+  </div>
+  </div>
+  <div>
+  </div>
+  <div class='table'id="table-container">
+    <table class = 'mb-2 align-items-center'>
+    <tbody>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+        <% if @shopping_list.length > 0 %>
+          <% @shopping_list.each_with_index  do |f, index| %>
+            <tr>
+              <td><%= f[:food].name %></td>
+              <td><%= "#{f[:quantity]} #{f[:food].measurement_unit}" %></td>
+              <td>$ <%= f[:food].price * f[:quantity] %></td>
+              <td><%= link_to icon('fa-solid', 'trash-can'), '/Food', data: { "turbo-method": :delete }, class: "btn btn-outline-danger" %></td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td></td>
+            <td>No food for this inventory</td>
+            <td></td>
+          </tr>          
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

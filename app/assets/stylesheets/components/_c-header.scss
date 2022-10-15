@@ -27,6 +27,7 @@ $nav-link-border-width: 3px;
 
   &__nav-list {
     display: flex;
+    align-items: center;
 
     & > li:not(:last-child) {
       margin-right: 1.2rem;
@@ -52,7 +53,15 @@ $nav-link-border-width: 3px;
   }
 
   &__user-btn {
-    position: relative;
+    @include centerWithFlex;
+
+    background-color: transparent;
+    border: none;
+
+    span {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
   }
 
   &__user-img {

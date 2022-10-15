@@ -1,24 +1,30 @@
 class ShoppingListController < ApplicationController
-  # GET /shopping_list using the shopping list array that we created
-  def index
-    @shopping_lists = 'just index'
-  end
-
   def inventory_food_quantity(food_id)
-    inventory_food = InventoryFood.where(food_id:, inventory_id: params[:id])
-    inventory_food.quantity
+    inventory_id = params[:inventory_id]
+    @inventory_food = InventoryFood.where(food_id:, inventory_id:)
+    @inventory_food[0].quantity
   end
 
-  # method to create shopping list
+  def index
+    @recipe_to_find = params[:recipe_id]
+    @inventory_to_find = params[:inventory_id]
 
-  def show
-    @recipe_foods = RecipeFood.where(id: params[:recipe_id])
+    @recipe_foods = RecipeFood.where(recipe_id: @recipe_to_find)
+    @total_price = 0
     @recipe_foods.each do |recipe_food|
-      if recipe_food.quantity > inventory_food_quantity(recipe_food.food_id)
+      @shopping_list ||= []
+      food_to_find = Food.find(recipe_food.food_id)
+      if InventoryFood.where(food_id: recipe_food.food_id, inventory_id: @inventory_to_find).blank?
+        @total_price = (food_to_find.price * recipe_food.quantity) + @total_price
+        @shopping_list << { food: food_to_find, quantity: recipe_food.quantity }
+      elsif recipe_food.quantity > inventory_food_quantity(recipe_food.food_id)
         @difference = recipe_food.quantity - inventory_food_quantity(recipe_food.food_id)
+        # add food to shopping list array
+        @total_price = (food_to_find.price * @difference) + @total_price
+        @shopping_list << { food: food_to_find, quantity: @difference }
       end
-      # add food to shopping list array
     end
-    @shopping_list << recipe_food.food_id
+
+    render 'shopping_list/index'
   end
 end

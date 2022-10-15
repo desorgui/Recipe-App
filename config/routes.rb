@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   get '/public_recipes', to: 'recipes#list_public'
 
-  post '/shopping_list', to: 'recipes#shopping_list'
+  get '/shopping_list', to: 'shopping_list#index' 
 
   root "recipes#list_public"
 end
