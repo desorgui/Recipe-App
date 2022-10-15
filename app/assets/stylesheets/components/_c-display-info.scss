@@ -1,5 +1,6 @@
 .c-display-info {
   @include centerWithFlex;
+
   gap: 1.2rem;
   // border: 2px solid #e7eae7;
   // border: 2px solid #ccc;
@@ -8,6 +9,7 @@
 
   &__box {
     @include centerWithFlex;
+
     flex-direction: column;
     text-align: center;
     border: 2px solid #e7eae7;

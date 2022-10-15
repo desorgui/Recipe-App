@@ -1,6 +1,6 @@
-class RecipeFoodsController < ApplicationController 
+class RecipeFoodsController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource only: :create, param_method: :ingredient_params 
+  load_and_authorize_resource only: :create, param_method: :ingredient_params
 
   def create
     recipe_id = params[:recipe_id]

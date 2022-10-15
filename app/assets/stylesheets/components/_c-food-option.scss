@@ -9,6 +9,7 @@
 
   &__img {
     @include roundElem(4.8rem);
+
     object-fit: cover;
     box-shadow: var(--shadow-1);
     margin-right: 1.6rem;

@@ -24,7 +24,9 @@
 
   &__img {
     box-sizing: content-box;
+
     @include roundElem(12rem);
+
     border: 3px solid var(--color-primary);
     padding: 0.4rem;
     object-fit: cover;

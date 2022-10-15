@@ -57,6 +57,7 @@ $nav-link-border-width: 3px;
 
   &__user-img {
     @include roundElem(4rem);
+
     margin-right: 0.8rem;
   }
 }

@@ -13,6 +13,7 @@
   &__icon-box {
     @include centerWithFlex;
     @include roundElem(3.6rem);
+
     background-color: var(--color-grey-250);
     margin: 0.8rem 1.2rem 0.8rem 0;
   }

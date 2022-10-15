@@ -11,8 +11,15 @@ class Food < ApplicationRecord
   private
 
   def image_type
-    if image.attached?
-      errors.add(:image, "Error: Please upload an image with one of the following extensions: jpeg, jpg, png, or webp!") unless image.content_type.in?(%w[image/png image/jpeg image/jpg image/webp])
-    end
+    return unless image.attached?
+
+    image_types = %w[
+      image/png image/jpeg image/jpg image/webp
+    ]
+
+    return if image.content_type.in?(image_types)
+
+    errors.add(:image,
+               'Error: Please upload an image with one of the following extensions: jpeg, jpg, png, or webp!')
   end
 end

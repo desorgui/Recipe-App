@@ -9,7 +9,7 @@
   align-items: flex-start;
   z-index: 200;
   padding: calc(var(--header-height) + 3.2rem) 0 4.8rem;
-  overflow-y: scroll; 
+  overflow-y: scroll;
 
   &__overlay {
     position: fixed;
@@ -32,9 +32,10 @@
     z-index: 160;
     overflow-y: hidden;
   }
-  
+
   &__header {
     @include spaceBetween;
+
     margin-bottom: 2.4rem;
   }
 

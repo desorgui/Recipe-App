@@ -1,9 +1,9 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, except: [:list_public, :show]
+  before_action :authenticate_user!, except: %i[list_public show]
   before_action :set_recipe, only: %i[show edit update destroy]
-  load_and_authorize_resource except: [:list_public, :show]
-  
-  def shopping_list 
+  load_and_authorize_resource except: %i[list_public show]
+
+  def shopping_list
     p params[:inventory_id]
     p params[:recipe_id]
   end

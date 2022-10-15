@@ -22,6 +22,7 @@
 
   &__author-img {
     @include roundElem(4rem);
+
     margin-right: 0.8rem;
   }
 
@@ -41,7 +42,7 @@
     font-weight: 400;
     color: #65676b;
   }
-  
+
   &__action {
     display: flex;
     align-items: center;
