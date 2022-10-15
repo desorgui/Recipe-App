@@ -6,23 +6,23 @@ class ShoppingListController < ApplicationController
   end
 
   def index
-    recipe_id = params[:recipe_id]
-    inventory_id = params[:inventory_id]
+    @recipe_to_find = params[:recipe_id]
+    @inventory_to_find = params[:inventory_id]
 
-    p recipe_id
-    p inventory_id
-
-    @recipe_foods = RecipeFood.where(recipe_id:recipe_id)
+    @recipe_foods = RecipeFood.where(recipe_id:@recipe_to_find)
+    @total_price = 0
     @recipe_foods.each do |recipe_food|
-      @shopping_list ||= []       
+      @shopping_list ||= []
       food_to_find = Food.find(recipe_food.food_id)
-      if InventoryFood.where(food_id: recipe_food.food_id, inventory_id:inventory_id).blank?
+      if InventoryFood.where(food_id: recipe_food.food_id, inventory_id:@inventory_to_find).blank?
+        @total_price = food_to_find.price * recipe_food.quantity + @total_price
         @shopping_list << {food: food_to_find, quantity: recipe_food.quantity}
       else
         if recipe_food.quantity > inventory_food_quantity(recipe_food.food_id)
           @difference = recipe_food.quantity - inventory_food_quantity(recipe_food.food_id)
           # add food to shopping list array
-          @shopping_list << {food: food_to_find, quantity:@difference}
+          @total_price = food_to_find.price * @difference + @total_price
+          @shopping_list << { food: food_to_find, quantity:@difference }
         end
       end
     end

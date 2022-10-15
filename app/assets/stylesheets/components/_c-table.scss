@@ -2,6 +2,19 @@
   max-width: 50rem;
   margin: auto;
   margin-top: 10rem;
+  display:block !important;
+  .shopping_details {
+    display: flex;
+    justify-content: space-between;
+  }
+  p {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    span {
+      font-weight: 600;
+      font-size: 1.8rem;
+    }
+  }
 }
 
 #table-container {
