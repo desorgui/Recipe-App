@@ -5,8 +5,20 @@
   <h1>
     Shopping List
   </h1>
-  </div>
+  <div class="shopping_details">
+    <div>
+    <p>Amount of food to buy <span><%= @shopping_list.length %></span> </p>
+    <p>Total value of food needed <span><%= @total_price %></span> </p>
+    </div>
 
+    <div>
+      <p>Recipe: <%= link_to "Recipe #{@recipe_to_find}", "/recipes/#{@recipe_to_find}", method: :get, class:''%></p>
+      <p>Recipe: <%= link_to "Inventory  #{@inventory_to_find}", "/inventories/#{@inventory_to_find}", method: :get, class:''%></p>    
+    </div>
+  </div>
+  </div>
+  <div>
+  </div>
   <div class='table'id="table-container">
     <table class = 'mb-2 align-items-center'>
     <tbody>
