@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<div>
+<div class="section-title">
+<h1>Inventories</h1>
+
+<%= link_to "Add new", new_inventory_path, class: "btn btn-add" %>
+</div>
+<div id="inventories">
+  <% @inventories.each do |inventory| %>
+  <div class="inventory">
+    <%= render inventory %>
+    <div class="left-side">
+    <h5>
+      <%= link_to "#{inventory.name}", inventory %>
+    </h5>
+     <%= link_to 'REMOVE', inventory_path(inventory.id), data: { "turbo-method": :delete }, class:'link'%>
+    </div>
+    <div class="right-side">
+      <p> <%= "#{inventory.description}" %></p>
+    </div>
+    </div>
+  <% end %>
+</div>
+</div>

@@ -4,6 +4,8 @@ class Food < ApplicationRecord
   has_many :recipe_foods, dependent: :destroy
   has_many :recipes, through: :recipe_foods
 
+  validates :measurement_unit, presence: true
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   has_one_attached :image
 
   validate :image_type

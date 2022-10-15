@@ -37,7 +37,7 @@ gem 'jbuilder'
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'tzinfo-data'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
@@ -81,3 +81,5 @@ gem 'devise', '~> 4.8'
 gem 'sass-rails', '~> 6.0'
 
 gem 'cancancan', '~> 3.4'
+
+gem 'font-awesome-sass', '~> 6.2.0'

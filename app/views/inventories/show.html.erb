@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+<section class = 'd-flex flex-column mb-2 align-items-center'>
+<div class="section-title inventory_foods">
+  <h1>
+    <%= @inventory.name %>
+  </h1>
+    <%= link_to icon('fa-solid', 'plus'), "/inventory_foods/#{@inventory.id}/new", method: :post, class:'btn btn-add'%>
+  </div>
+
+  <div class='table'id="table-container">
+    <table class = 'mb-2 align-items-center'>
+    <tbody>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+        <% if @inventory_food.length > 0 %>
+          <% @inventory_food.each do |f| %>
+            <tr>
+              <td><%= f.food.name %></td>
+              <td><%= f.quantity %> <%= f.food.measurement_unit %></td>
+              <td><%= link_to icon('fa-solid', 'trash-can'), inventory_inventory_food_path(@inventory.id,f.id), data: { "turbo-method": :delete }, class: "btn btn-outline-danger" %></td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td></td>
+            <td>No food for this inventory</td>
+            <td></td>
+          </tr>          
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
