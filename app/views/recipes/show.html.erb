@@ -24,7 +24,7 @@
       </div>
 
       <div class="c-recipe-view__action">
-        <%= link_to recipes_path, class: "c-icon-btn" do %>
+        <%= link_to 'javascript:history.back()', class: "c-icon-btn" do %>
           <svg class="c-icon--sm">
             <use xlink:href=<%= image_url("icons/sprite.svg#chevron-left")%>></use>
           </svg>
@@ -50,35 +50,39 @@
 
     <%= render "components/display_info", infos: %>
 
-    <div class="c-recipe-view__btn-group">
-      <%= button_to "generate shopping list", nil,
-        class: "c-btn",
-        remote: true,
-        data: {
-          controller: "popup",
-          action: "popup#openPopup",
-          popup_id_param: "select-inventories-popup"
-        }
-      %>
-      <%= button_to "publish this recipe", nil, class: "c-btn" %>
-    </div>
+    <% if can? :manage, @recipe %>
+      <div class="c-recipe-view__btn-group">
+        <%= button_to "generate shopping list", nil,
+          class: "c-btn",
+          remote: true,
+          data: {
+            controller: "popup",
+            action: "popup#openPopup",
+            popup_id_param: "select-inventories-popup"
+          }
+        %>
+        <%= button_to "publish this recipe", nil, class: "c-btn" %>
+      </div>
+    <% end %>
 
     <div class="c-ingredients c-recipe-view__ingredients">
       <header class="c-ingredients__header">
         <h2 class="c-ingredients__title">
           <%= pluralize(@ingredients.length, 'Ingredient') %>
         </h2>
-        <%= button_to nil,
-          class: "c-icon-btn",
-          remote: true,
-          data: {
-            controller: "popup",
-            action: "popup#openPopup",
-            popup_id_param: "select-food-popup"
-          } do %>
-          <svg class="c-icon--sm">
-            <use xlink:href=<%= image_url("icons/sprite.svg#plus")%>></use>
-          </svg>
+        <% if can? :manage, @recipe %>
+          <%= button_to nil,
+            class: "c-icon-btn",
+            remote: true,
+            data: {
+              controller: "popup",
+              action: "popup#openPopup",
+              popup_id_param: "select-food-popup"
+            } do %>
+            <svg class="c-icon--sm">
+              <use xlink:href=<%= image_url("icons/sprite.svg#plus")%>></use>
+            </svg>
+          <% end %>
         <% end %>
       </header>
 
@@ -88,7 +92,7 @@
         <ul class="c-simple-list">
           <% @ingredients.each do |ingredient| %>
             <li>
-              <%= render "components/ingredient_item", ingredient: %>
+              <%= render "components/ingredient_item", ingredient:, recipe: @recipe %>
             </li>
           <% end %>
         </ul>

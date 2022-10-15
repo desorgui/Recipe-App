@@ -5,17 +5,13 @@
   padding: 0.8rem 1.2rem;
   transition: all 0.2s;
 
-  &:hover {
-    // border-color: #67AC5A;
-    // border-color: #48dd96;
+  &__img-link {
+    align-self: center;
   }
 
   &__img {
-    align-self: center;
     @include roundElem(12rem);
-    box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 6px 14px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-    // margin-top: -3.2rem;
     margin-bottom: 1.2rem;
     object-fit: cover;
   }
@@ -35,8 +31,11 @@
 
     font-size: 1.8rem;
     font-weight: 700;
-    // text-align: center;
     margin-bottom: 0.8rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__description {
@@ -49,7 +48,6 @@
     overflow: hidden;
 
     font-size: 1.5rem;
-    // text-align: center;
     color: #65676b;
     margin-bottom: 1.6rem;
   }
@@ -58,16 +56,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // border-top: 1px solid #ced0d4;
-    // padding-top: 1.2rem;
   }
 
   &__time {
     display: flex;
     align-items: center;
-    // background-color: #e0e5f0;
-    // padding: 0.8rem 1.2rem;
-    border-radius: 100px;
+    padding: 0.8rem 0;
 
     span {
       font-size: 1.5rem;
@@ -75,13 +69,6 @@
       margin-left: 0.4rem;
     }
   }
-
-  // &__time {
-  //   font-size: 1.6rem;
-  //   font-weight: 600;
-  //   margin-left: 0.4rem;
-  //   margin-right: auto;
-  // }
 
   &__btn {
     @include centerWithFlex;

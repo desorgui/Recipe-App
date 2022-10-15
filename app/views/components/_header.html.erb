@@ -1,5 +1,7 @@
 <header class="c-header">
   <div class="c-header__content">
     <%= link_to 'Recipe App', root_path, class: 'c-header__logo' %>
+    <%= button_to "sign out", destroy_user_session_path, method: :delete, class: "c-header__nav-link" %>
+    <%= link_to "sign in", new_user_session_path, class: "c-header__nav-link" %>
   </div>
 </header>

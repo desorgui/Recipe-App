@@ -18,13 +18,15 @@
   </span>
 
   <div class="c-ingredient-item__action">
-    <%= button_to recipe_recipe_food_path(ingredient.recipe_id, ingredient.food), 
-      method: :delete, 
-      class: "c-ingredient-item__btn" do 
-    %>
-      <svg class="c-icon--md">
-        <use xlink:href=<%= image_url("icons/sprite.svg#x")%>></use>
-      </svg>
+    <% if can? :manage, recipe %>
+      <%= button_to recipe_recipe_food_path(recipe, ingredient.food), 
+        method: :delete, 
+        class: "c-ingredient-item__btn" do 
+      %>
+        <svg class="c-icon--md">
+          <use xlink:href=<%= image_url("icons/sprite.svg#x")%>></use>
+        </svg>
+      <% end %>
     <% end %>
   </div>
 </div>

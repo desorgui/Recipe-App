@@ -1,9 +1,15 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, except: [:list_public, :show]
   before_action :set_recipe, only: %i[show edit update destroy]
-
+  load_and_authorize_resource except: [:list_public, :show]
+  
   def shopping_list 
     p params[:inventory_id]
     p params[:recipe_id]
+  end
+
+  def list_public
+    @recipes = Recipe.where(public: true)
   end
 
   # GET /recipes or /recipes.json
@@ -34,10 +40,8 @@ class RecipesController < ApplicationController
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully created.' }
-        format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,10 +51,8 @@ class RecipesController < ApplicationController
     respond_to do |format|
       if @recipe.update(recipe_params)
         format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
   end

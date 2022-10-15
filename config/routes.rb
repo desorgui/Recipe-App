@@ -12,5 +12,5 @@ Rails.application.routes.draw do
 
   post '/shopping_list', to: 'recipes#shopping_list'
 
-  root "recipes#index"
+  root "recipes#list_public"
 end
