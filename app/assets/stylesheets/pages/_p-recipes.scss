@@ -1,0 +1,25 @@
+.p-recipes {
+  padding-top: 3.2rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.6rem 3.2rem;
+    margin-bottom: 3.2rem;
+  }
+
+  &__count {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 100px;
+    padding: 0.6rem 1.2rem;
+  }
+}

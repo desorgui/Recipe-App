@@ -1,14 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<section class="p-recipes">
+  <header class="p-recipes__header c-card">
+    <h1 class="c-section-title"><%= pluralize(@recipes.length, 'Recipe') %></h1>
+    <%= link_to "new recipe", new_recipe_path, class: "c-btn" %>
+  </header>
 
-<h1>Recipes</h1>
-
-<div id="recipes">
-  <% @recipes.each do |recipe| %>
-    <%= render recipe %>
+  <% if @recipes.empty? %>
     <p>
-      <%= link_to "Show this recipe", recipe %>
+      You don't have any recipes yet. Create one!
     </p>
+  <% else %>
+    <div class="c-recipes-grid" id="recipes">
+      <% @recipes.each do |recipe| %>
+        <%= render recipe %>
+      <% end %>
+    </div>
   <% end %>
-</div>
-
-<%= link_to "New recipe", new_recipe_path %>
+</section>

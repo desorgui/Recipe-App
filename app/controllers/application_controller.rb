@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  rescue_from CanCan::AccessDenied, with: :handle_auth_error
 
-  before_action :configure_permitted_parameters, if: :devise_controller?
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  def handle_auth_error
+    respond_to do |format|
+      format.html { redirect_to root_path, alert: 'You are not authorized to complete this action.' }
+    end
   end
 end

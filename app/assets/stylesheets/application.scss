@@ -17,3 +17,33 @@
 // Import pages styles
 @import 'pages/p-main-container';
 @import 'pages/p-inventories-index';
+@import 'components/c-icon';
+@import 'components/c-recipe-item';
+@import 'components/c-btn';
+@import 'components/c-recipes-grid';
+@import 'components/c-card';
+@import 'components/c-section-title';
+@import 'components/c-input';
+@import 'components/c-new-recipe-form';
+@import 'components/c-recipe-view';
+@import 'components/c-ingredient-item';
+@import 'components/c-ingredients';
+@import 'components/c-simple-list';
+@import 'components/c-display-info';
+@import 'components/c-icon-btn';
+@import 'components/c-popup';
+@import 'components/c-food-option';
+@import 'components/c-food-options-form';
+@import 'components/c-inventory-options-form';
+@import 'components/c-hdropdown';
+@import 'components/c-hdropdown-btn';
+
+// Import pages styles
+@import 'pages/p-main-container';
+@import 'pages/p-recipes';
+@import 'pages/p-new-recipes';
+@import 'pages/p-recipe-details';
+
+// Import utility classes
+
+@import 'base/utilities';

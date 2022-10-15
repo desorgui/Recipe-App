@@ -1,0 +1,27 @@
+.c-btn {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.3px;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: 0.8rem;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &--lg {
+    height: 4.8rem;
+    font-size: 1.6rem;
+    padding: 0 2.4rem;
+  }
+
+  &--full {
+    width: 100%;
+  }
+}
