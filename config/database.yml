@@ -7,20 +7,20 @@ default: &default
 development:
   <<: *default
   database: recipe_app_db_dev
-  # username: docker
-  # password: docker
-  username: postgres
-  password: jesulamo@1995
+  username: docker
+  password: docker
+  # username: postgres
+  # password: jesulamo@1995
   host: localhost
   port: 5432
 
 test:
   <<: *default
   database: recipe_app_db_test
-  # username: docker
-  # password: docker
-  username: postgres
-  password: jesulamo@1995
+  username: docker
+  password: docker
+  # username: postgres
+  # password: jesulamo@1995
   host: localhost
   port: 5432
 
