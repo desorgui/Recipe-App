@@ -1,3 +1,5 @@
+$nav-link-border-width: 3px;
+
 .c-header {
   position: fixed;
   top: 0;
@@ -16,5 +18,45 @@
     height: 100%;
     padding: 0 2.4rem;
     margin: 0 auto;
+  }
+
+  &__logo {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
+  &__nav-list {
+    display: flex;
+
+    & > li:not(:last-child) {
+      margin-right: 1.2rem;
+    }
+  }
+
+  &__nav-link {
+    display: flex;
+    align-items: center;
+    height: var(--header-height);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    background-color: transparent;
+    border: none;
+    border-bottom: $nav-link-border-width solid transparent;
+    padding: $nav-link-border-width 0.4rem 0;
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: var(--color-primary);
+    }
+  }
+
+  &__user-btn {
+    position: relative;
+  }
+
+  &__user-img {
+    @include roundElem(4rem);
+    margin-right: 0.8rem;
   }
 }
