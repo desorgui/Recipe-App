@@ -1,0 +1,10 @@
+<%= link_to route, class: "c-hdropdown-btn" do %>
+  <div class="c-hdropdown-btn__icon-box">
+    <svg class="c-icon--md">
+      <use xlink:href=<%= image_url(icon_path)%>></use>
+    </svg>
+  </div>
+  <h3 class="c-hdropdown-btn__title">
+    <%= title %>
+  </h3>
+<% end %>

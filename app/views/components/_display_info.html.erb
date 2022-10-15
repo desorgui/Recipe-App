@@ -1,0 +1,12 @@
+<div class="c-display-info">
+  <% infos.each do |info| %>
+    <div class="c-display-info__box">
+      <span class="c-display-info__value">
+        <%= info[:value] %>
+      </span>
+      <h3 class="c-display-info__title">
+        <%= info[:title] %>
+      </h3>
+    </div>
+  <% end %>
+</div>

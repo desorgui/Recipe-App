@@ -1,0 +1,30 @@
+.c-inventory-options-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__sgroup {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ced0d4;
+    padding-right: 2.4rem;
+    margin-right: 2.4rem;
+  }
+
+  &__label {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+
+  &__select {
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 100px;
+    background-color: var(--color-primary-300);
+    color: inherit;
+    outline: none;
+    padding: 0.8rem;
+    cursor: pointer;
+  }
+}

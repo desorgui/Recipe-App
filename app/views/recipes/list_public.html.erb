@@ -1,0 +1,22 @@
+<section class="p-recipes">
+  <header class="p-recipes__header c-card">
+    <h1 class="c-section-title">
+      Public recipes
+    </h1>
+    <span class="p-recipes__count">
+      <%= pluralize(@recipes.length, 'item') %>
+    </span>
+  </header>
+
+  <% if @recipes.empty? %>
+    <p>
+      There are no public recipes. Be the first to publish one!
+    </p>
+  <% else %>
+    <div class="c-recipes-grid" id="recipes">
+      <% @recipes.each do |recipe| %>
+        <%= render recipe %>
+      <% end %>
+    </div>
+  <% end %>
+</section>

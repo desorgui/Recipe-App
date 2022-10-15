@@ -1,10 +1,115 @@
-<p style="color: green"><%= notice %></p>
+<% infos = [
+    { title: "preparation time (hrs)", value: @recipe.preparation_time },
+    { title: "cooking time (hrs)", value: @recipe.cooking_time }
+  ] %>
 
-<%= render @recipe %>
+<section class="p-recipe-details">
 
-<div>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-  <%= link_to "Back to recipes", recipes_path %>
+  <article class="c-recipe-view c-card">
+    <header class="c-recipe-view__header">
+      <div class="c-recipe-view__author-box">
+        <img 
+          src=<%= image_url('blank_avatar.jpg') %>
+          class="c-recipe-view__author-img" 
+          alt="recipe author photo" 
+        />
+        <div class="c-recipe-view__author-info">
+          <span class="c-recipe-view__author-name">
+            <%= @recipe.user.name %>
+          </span>
+          <span class="c-recipe-view__date">
+            created <%= time_ago_in_words(@recipe.created_at) %> ago
+          </span>
+        </div>
+      </div>
 
-  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
-</div>
+      <div class="c-recipe-view__action">
+        <%= link_to 'javascript:history.back()', class: "c-icon-btn" do %>
+          <svg class="c-icon--sm">
+            <use xlink:href=<%= image_url("icons/sprite.svg#chevron-left")%>></use>
+          </svg>
+        <% end %>
+        <%= render "components/delete_recipe_btn", recipe: @recipe %>
+      </div>
+    </header>
+
+    <%= render "components/attached_img", 
+      image: @recipe.image, 
+      image_class: "c-recipe-view__img",
+      image_alt: "recipe photo",
+      placeholder: "recipe_placeholder.jpg" 
+    %>
+
+    <h1 class="c-recipe-view__title c-section-title">
+      <%= @recipe.name %>
+    </h1>
+
+    <p class="c-recipe-view__description">
+      <%= @recipe.description %>
+    </p>
+
+    <%= render "components/display_info", infos: %>
+
+    <% if can? :manage, @recipe %>
+      <div class="c-recipe-view__btn-group">
+        <%= button_to "generate shopping list", nil,
+          class: "c-btn",
+          remote: true,
+          data: {
+            controller: "popup",
+            action: "popup#openPopup",
+            popup_id_param: "select-inventories-popup"
+          }
+        %>
+        <%= button_to "publish this recipe", nil, class: "c-btn" %>
+      </div>
+    <% end %>
+
+    <div class="c-ingredients c-recipe-view__ingredients">
+      <header class="c-ingredients__header">
+        <h2 class="c-ingredients__title">
+          <%= pluralize(@ingredients.length, 'Ingredient') %>
+        </h2>
+        <% if can? :manage, @recipe %>
+          <%= button_to nil,
+            class: "c-icon-btn",
+            remote: true,
+            data: {
+              controller: "popup",
+              action: "popup#openPopup",
+              popup_id_param: "select-food-popup"
+            } do %>
+            <svg class="c-icon--sm">
+              <use xlink:href=<%= image_url("icons/sprite.svg#plus")%>></use>
+            </svg>
+          <% end %>
+        <% end %>
+      </header>
+
+      <% if @ingredients.empty? %>
+        <p>No ingredients added.</p>
+      <% else %>
+        <ul class="c-simple-list">
+          <% @ingredients.each do |ingredient| %>
+            <li>
+              <%= render "components/ingredient_item", ingredient:, recipe: @recipe %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </article>
+
+  <%= render "components/ingredients_popup",
+    popup_id: "select-food-popup",
+    form_route: recipe_recipe_foods_path(@recipe),
+    foods: @foods
+  %>
+
+  <%= render "components/shopping_list_popup",
+    popup_id: "select-inventories-popup",
+    form_route: shopping_list_path(),
+    inventories: @inventories,
+    recipe_id: @recipe.id
+  %>
+</section>

@@ -1,0 +1,59 @@
+<div 
+  class="c-popup u-is-hidden" 
+  id=<%= popup_id %>
+>
+  <div class="c-popup__overlay"></div>
+  <div class="c-popup__window">
+    <header class="c-popup__header">
+      <h2 class="c-section-title">
+        Generating shopping list
+      </h2>
+      <%= button_to nil, 
+        class: "c-popup__close-btn", 
+        remote: true,
+        data: {
+          controller: "popup",
+          action: "popup#closePopup",
+          popup_id_param: popup_id
+        } do %>
+        <svg class="c-icon--sm">
+          <use xlink:href=<%= image_url("icons/sprite.svg#x")%>></use>
+        </svg>
+      <% end %>
+    </header>
+    <% if inventories.empty? %>
+      <p>No inventories created. Please, create an inventory first!</p>
+    <% else %>
+      <%= form_with url: form_route, class: "c-inventory-options-form" do |form| %>
+        <div class="c-inventory-options-form__sgroup">
+          <label 
+            for="inventory_select"
+            class="c-inventory-options-form__label"
+          >
+            Choose an inventory:
+          </label>
+          <select 
+            id="inventory_select"
+            name="inventory_id"
+            class="c-inventory-options-form__select"
+            required
+          >
+            <% inventories.each do |inventory| %>
+              <option value=<%= inventory.id %>>
+                <%= inventory.name %>
+              </option>
+            <% end %>
+          </select>
+          <input 
+            name="recipe_id" 
+            type="hidden"
+            value=<%= recipe_id %>
+            autocomplete="off"
+          >
+        </div>
+
+        <%= form.submit "generate", class: "c-btn" %>
+      <% end %>
+    <% end %>
+  </div> 
+</div>

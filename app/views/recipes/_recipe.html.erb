@@ -1,27 +1,31 @@
-<div id="<%= dom_id recipe %>">
-  <p>
-    <strong>Name:</strong>
-    <%= recipe.name %>
-  </p>
+<article class="c-recipe-item c-card" id="<%= dom_id recipe %>">
+  <%= link_to recipe, class: "c-recipe-item__img-link" do %>
+    <%= render "components/attached_img", 
+      image: recipe.image, 
+      image_class: "c-recipe-item__img", 
+      image_alt: "recipe photo",
+      placeholder: "recipe_placeholder.jpg"
+    %>
+  <% end %>
+  <div class="c-recipe-item__content">
+    <%= link_to recipe do %>
+      <h2 class="c-recipe-item__title">
+        <%= recipe.name %> 
+      </h2>
+     <% end %>
+    <p class="c-recipe-item__description">
+      <%= recipe.description %>
+    </p>
+    <div class="c-recipe-item__info">
+      <div class="c-recipe-item__time">
+        <svg class="c-icon--sm">
+          <use xlink:href=<%= image_url("icons/sprite.svg#clock")%>></use>
+        </svg>
+        <span><%= recipe.preparation_time %> hrs</span>
+      </div>
+      
+      <%= render "components/delete_recipe_btn", recipe: %>
+    </div>
+  </div>
+</article>
 
-  <p>
-    <strong>Preparation time:</strong>
-    <%= recipe.preparation_time %>
-  </p>
-
-  <p>
-    <strong>Cooking time:</strong>
-    <%= recipe.cooking_time %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= recipe.description %>
-  </p>
-
-  <p>
-    <strong>Public:</strong>
-    <%= recipe.public %>
-  </p>
-
-</div>

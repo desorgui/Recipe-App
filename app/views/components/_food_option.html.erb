@@ -1,0 +1,39 @@
+<div class="c-food-option">
+  <input 
+    name=<%= "ingredients[#{option_index}][id]" %> 
+    type="checkbox" 
+    class="c-food-option__checkbox"
+    value="<%=food.id %>" 
+  />
+  <%= render "components/attached_img", 
+    image: food.image,
+    image_class: "c-food-option__img",
+    image_alt: "ingredient photo",
+    placeholder: "food_placeholder.png"
+  %>
+  <div class="c-food-option__info">
+    <h3 class="c-food-option__title">
+      <%= food.name %>
+    </h3>
+    <p class="c-food-option__price">
+      Price: $<%= food.price %>
+    </p>
+  </div>
+  <div class="c-food-option__form-group">
+    <label 
+      for="ingredient_qnty"
+      class="c-food-option__label"
+    >
+      Qnty (<%= food.measurement_unit %>):
+    </label>
+    <input 
+      id="ingredient_qnty"
+      value="1" 
+      min="0" 
+      step="any"
+      name=<%= "ingredients[#{option_index}][quantity]" %> 
+      type="number" 
+      class="c-food-option__input c-input c-input--number" 
+    />
+  </div>
+</div>
