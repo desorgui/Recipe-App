@@ -50,7 +50,7 @@
 
     <%= render "components/display_info", infos: %>
 
-    <% if can? :manage, @recipe %>
+    <% if current_user %>
       <div class="c-recipe-view__btn-group">
         <%= button_to "generate shopping list", nil,
           class: "c-btn",
@@ -61,9 +61,12 @@
             popup_id_param: "select-inventories-popup"
           }
         %>
-        <%= button_to "publish this recipe", nil, class: "c-btn" %>
+        <% if can? :manage, @recipe %>
+          <%= button_to "publish this recipe", nil, class: "c-btn" %>
+        <% end %>
       </div>
     <% end %>
+    
 
     <div class="c-ingredients c-recipe-view__ingredients">
       <header class="c-ingredients__header">
