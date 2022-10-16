@@ -5,7 +5,7 @@ RSpec.describe Inventory, type: :model do
     before do
       @inventory = Inventory.create(
         name: 'Inventory A',
-        description: "testing",
+        description: 'testing',
         user_id: 1
       )
     end
