@@ -51,8 +51,8 @@
     </div>
 
     <div class="col-12 col-md-6 mb-3">
-      <%= form.label :measure_unit, class: 'form-label' %>
-      <%= form.select :measure_unit, 
+      <%= form.label :measurement_unit, class: 'form-label' %>
+      <%= form.select :measurement_unit, 
         grouped_options_for_select(grouped_options),
         {include_blank: 'Select'},
         class: 'form-select',
@@ -62,14 +62,9 @@
 
     <div class="col-12 col-md-3 mb-3">
       <%= form.label :price, class: 'form-label' %>
-      <%= form.text_field :price, class: 'form-control', pattern: '[0-9.]+', required: true %>
+      <%= form.text_field :price, class: 'form-control', step: "any", required: true %>
       <span class="comment">Price for unit</span>
-    </div>    
-
-    <div class="col-12 col-md-3 mb-3">
-      <%= form.label :quantity, class: 'form-label' %>
-      <%= form.text_field :quantity, class: 'form-control', pattern: '[0-9.]+', required: true %>
-    </div>    
+    </div>      
 
     <div class='col-12 mt-3 text-end'>
       <%= form.submit 'Save', class: 'btn btn-primary text-light ms-3' %>

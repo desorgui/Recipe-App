@@ -20,7 +20,6 @@
         <thead>
           <tr>
             <th scope="col" class="text-center">Food</th>
-            <th scope="col" class="text-center wd-120">Quantity</th>
             <th scope="col" class="text-center wd-120">Value</th>
             <th scope="col" class="text-center wd-120">Actions</th>
           </tr>
@@ -30,7 +29,6 @@
           <% @foods.each do |food| %>
             <tr>
               <td><%=food.name %></td>
-              <td class="text-center wd-120"><%= "#{food.quantity} #{food.measure_unit}" %></td>
               <td class="text-end wd-120"><%=number_to_currency(food.price, :unit => "$") %></td>
               <td class="wd-140 display-flex">
               <%if can? :read, food%>
@@ -52,8 +50,8 @@
             </tr>
           <% end %>
 <% else %>
-          <tr>
-            <td colspan="4" class="col-12 text-center text-secondary py-5"><%=msj_empty %></td>
+          <tr> 
+            <td colspan="4" class="col-12 text-center text-secondary py-5">No food created. Create one!</td>
           </tr>
 <% end %>          
         </tbody>
