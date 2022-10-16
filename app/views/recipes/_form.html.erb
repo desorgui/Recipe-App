@@ -1,0 +1,69 @@
+<%= form_with(model: recipe, class: "c-new-recipe-form c-card") do |form| %>
+  <% if recipe.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+        <% recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="c-new-recipe-form__upload">
+    <img class="c-new-recipe-form__img" src=<%= image_url("recipe_placeholder.jpg") %> alt="" />
+    <%= form.label :upload_image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="c-new-recipe-form__input-group">
+    <div>
+      <%= form.text_field :name, 
+        class: "c-input",
+        placeholder: "Enter the recipe name...", 
+        required: true, 
+        'aria-label': 'Recipe name' 
+      %>
+    </div>
+
+    <div>
+      <%= form.text_area :description,
+        class: "c-input c-input--textarea",
+        placeholder: "Enter the recipe description...", 
+        required: true, 
+        'aria-label': 'Description' 
+       %>
+    </div>
+
+    <div>
+      <%= form.label :preparation_time %>
+      <%= form.number_field :preparation_time,
+        class: "c-input",
+        value: 0.25,
+        step: 0.25,
+        min: 0.25
+       %>
+    </div>
+
+    <div>
+      <%= form.label :cooking_time %>
+      <%= form.number_field :cooking_time,
+        class: "c-input",
+        value: 0.25,
+        step: 0.25,
+        min: 0.25
+      %>
+    </div>
+
+
+    <div>
+      <%= form.label :public %>
+      <%= form.check_box :public %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.submit "Create Recipe", class: "c-btn c-btn--full c-btn--lg" %>
+  </div>
+<% end %>

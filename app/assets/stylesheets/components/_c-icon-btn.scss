@@ -1,0 +1,23 @@
+.c-icon-btn {
+  @include centerWithFlex;
+
+  background-color: #e0e5f0;
+  border: none;
+  border-radius: 50%;
+  padding: 0.8rem;
+  transition: all 0.2s;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+
+  &--primary {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+
+    &:hover {
+      filter: brightness(1);
+      opacity: 0.9;
+    }
+  }
+}

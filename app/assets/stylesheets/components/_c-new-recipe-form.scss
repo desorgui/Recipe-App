@@ -1,0 +1,43 @@
+.c-new-recipe-form {
+  padding: 2.4rem;
+
+  &__upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    & > label {
+      position: absolute;
+      bottom: 0;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    & > input {
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+
+  &__img {
+    box-sizing: content-box;
+
+    @include roundElem(12rem);
+
+    border: 3px solid var(--color-primary);
+    padding: 0.4rem;
+    object-fit: cover;
+    margin-bottom: 1.2rem;
+  }
+
+  &__input-group {
+    margin: 2.4rem 0;
+
+    & > *:not(:last-child) {
+      margin-bottom: 1.2rem;
+    }
+  }
+}

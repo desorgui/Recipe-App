@@ -1,0 +1,60 @@
+<div 
+  class="c-popup u-is-hidden" 
+  id=<%= popup_id %>
+>
+  <div class="c-popup__overlay"></div>
+  <div class="c-popup__window">
+    <header class="c-popup__header">
+      <h2 class="c-section-title">
+        Generating shopping list
+      </h2>
+      <%= button_to nil, 
+        class: "c-popup__close-btn", 
+        remote: true,
+        data: {
+          controller: "popup",
+          action: "popup#closePopup",
+          popup_id_param: popup_id
+        } do %>
+        <svg class="c-icon--sm">
+          <use xlink:href=<%= image_url("icons/sprite.svg#x")%>></use>
+        </svg>
+      <% end %>
+    </header>
+    <% if inventories.empty? %>
+      <p>No inventories created. Please, create an inventory first!</p>
+    <% else %>
+      <div class="c-inventory-options-form">
+        <div class="c-inventory-options-form__sgroup">
+          <label 
+            for="inventory_select"
+            class="c-inventory-options-form__label"
+          >
+            Choose an inventory:
+          </label>
+          <select 
+            id="inventory_select"
+            name="inventory_id"
+            class="c-inventory-options-form__select"
+            required
+          >
+            <% inventories.each do |inventory| %>
+              <option value=<%= inventory.id %>>
+                <%= inventory.name %>
+              </option>
+            <% end %>
+          </select>
+        </div>
+
+        <%= link_to "generate", nil, 
+          class: "c-btn",
+          data: {
+          controller: "shoplist",
+          action: "shoplist#generate",
+          shoplist_recipeid_param: recipe_id,
+          shoplist_select_param: "inventory_select"  
+        } %>
+      </div>
+    <% end %>
+  </div> 
+</div>

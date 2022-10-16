@@ -1,0 +1,32 @@
+<div class="c-ingredient-item">
+  <%= render "components/attached_img", 
+    image: ingredient.food.image, 
+    image_class: "c-ingredient-item__img",
+    image_alt: "ingredient photo",
+    placeholder: "food_placeholder.png"
+  %>
+  <div class="c-ingredient-item__info">
+    <h3 class="c-ingredient-item__title">
+      <%= ingredient.food.name %>
+    </h3>
+    <p class="c-ingredient-item__price">
+      Total price: $<%= ingredient.food.price * ingredient.quantity %>
+    </p>
+  </div>
+  <span class="c-ingredient-item__quantity">
+    <%= "#{ingredient.quantity} #{ingredient.food.measurement_unit}" %>
+  </span>
+
+  <div class="c-ingredient-item__action">
+    <% if can? :manage, recipe %>
+      <%= button_to recipe_recipe_food_path(recipe, ingredient.food), 
+        method: :delete, 
+        class: "c-ingredient-item__btn" do 
+      %>
+        <svg class="c-icon--md">
+          <use xlink:href=<%= image_url("icons/sprite.svg#x")%>></use>
+        </svg>
+      <% end %>
+    <% end %>
+  </div>
+</div>

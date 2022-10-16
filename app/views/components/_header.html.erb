@@ -1,0 +1,78 @@
+<% user_dropdown_btns = [
+  { route: foods_path, icon: "icons/sprite.svg#coffee", title: "My foods"},
+  { route: recipes_path, icon: "icons/sprite.svg#list", title: "My recipes"},
+  { route: inventories_path, icon: "icons/sprite.svg#package", title: "My inventories"}
+] %>
+
+<% create_dropdown_btns = [
+  { route: new_food_path, icon: "icons/sprite.svg#coffee", title: "Create new food"},
+  { route: new_recipe_path, icon: "icons/sprite.svg#list", title: "Create new recipe"},
+  { route: new_inventory_path, icon: "icons/sprite.svg#package", title: "Create new inventories"}
+] %>
+
+<header class="c-header">
+  <div class="c-header__content">
+    <%= link_to 'Recipe App', root_path, class: 'c-header__logo' %>
+
+    <nav class="c-header__nav">
+      <ul class="c-header__nav-list">
+        <li>
+          <%= link_to "home", root_path, class: "c-header__nav-link" %>
+        </li>
+        <% if current_user %>
+          <li>
+            <%= button_to "sign out", destroy_user_session_path, method: :delete, class: "c-header__nav-link" %>
+          </li>
+          <li>
+            <%= button_to nil, 
+              remote: true,
+              class: "c-icon-btn",
+              data: {
+              controller: "hdropdowns",
+              action: "hdropdowns#toggleDropdown",
+              hdropdowns_id_param: "create-header-dropdown",
+            } do %>
+              <svg class="c-icon--sm">
+                <use xlink:href=<%= image_url("icons/sprite.svg#plus")%>></use>
+              </svg>
+            <% end %>
+          </li>
+          <li>
+            <%= button_to nil, remote: true, class: "c-header__user-btn",
+            data: {
+              controller: "hdropdowns",
+              action: "hdropdowns#toggleDropdown",
+              hdropdowns_id_param: "user-header-dropdown",
+            } do %> 
+              <img 
+                src=<%= image_url('blank_avatar.jpg') %>
+                class="c-header__user-img" 
+                alt="my photo" 
+              />
+              <span><%= current_user.name %></span>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "sign up", new_user_registration_path, class: "c-header__nav-link" %>
+          </li>
+          <li>
+            <%= link_to "sign in", new_user_session_path, class: "c-header__nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+
+  <%= render "components/header_dropdown", 
+    id: "create-header-dropdown",
+    title: "create",
+    buttons: create_dropdown_btns 
+  %>
+
+  <%= render "components/header_dropdown", 
+    id: "user-header-dropdown",
+    title: "my account",
+    buttons: user_dropdown_btns 
+  %>
+</header>

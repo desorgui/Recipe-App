@@ -1,0 +1,9 @@
+.c-food-options-form {
+  display: flex;
+  flex-direction: column;
+
+  & > input[type="submit"] {
+    align-self: center;
+    margin-top: 2.4rem;
+  }
+}

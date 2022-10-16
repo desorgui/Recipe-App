@@ -1,0 +1,73 @@
+.inventory_foods {
+  max-width: 50rem;
+  margin: auto;
+  margin-top: 10rem;
+  display: block !important;
+
+  .shopping_details {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  p {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+
+    span {
+      font-weight: 600;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+#table-container {
+  border-radius: 15px;
+  border: 10px solid rgba(0, 0, 0, 0.05);
+  max-width: 55rem;
+  overflow: hidden;
+  margin: 2rem auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    height: auto;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: capitalize;
+    background:
+      linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(245, 255, 246, 0.1) 100%
+      );
+
+    tbody {
+      height: 100%;
+      width: 100%;
+    }
+
+    tr {
+      td,
+      th {
+        padding: 2rem;
+        text-align: center;
+      }
+
+      th {
+        color: var(--color-grey-50);
+      }
+
+      td {
+        color: var(--color-grey-950);
+        font-weight: lighter;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.03);
+        }
+      }
+
+      &:first-child {
+        background: linear-gradient(45deg, var(--color-primary-400) 0%, var(--color-grey-500) 100%);
+      }
+    }
+  }
+}
