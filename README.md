@@ -2,7 +2,7 @@
 
 # Recipe App
 
-> Complete Recipe app built with RoR, which allows the user to manage foods, inventories and recipes.
+> Complete Recipe app built with Ruby on Rails, which allows the user to manage foods, inventories and recipes.
 
 ## Built With
 
@@ -26,14 +26,16 @@ To get a local copy up and running follow these simple example steps.
 ### Setup
 
 Download the code from this repository, by following these two steps:
-  - Click on the ``Code`` button, above the files list.
-  - Click on the ``Donwload ZIP`` button to download the code.
+
+- Click on the `Code` button, above the files list.
+- Click on the `Donwload ZIP` button to download the code.
 
 ### Install
 
 #### 1- Install the project dependencies
 
 1.1- Install the [Ruby Bundler](https://bundler.io/) using this command on the root project's directory:
+
 ```console
 $ gem install bundler
 ```
@@ -68,7 +70,7 @@ $ rails db:migrate
 
 ### Usage
 
-To use this application, run this command on the root project's directory: 
+To use this application, run this command on the root project's directory:
 
 ```console
 $ rails s
